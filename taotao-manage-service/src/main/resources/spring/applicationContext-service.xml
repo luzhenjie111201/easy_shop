@@ -29,5 +29,5 @@
 	<!-- <bean id="testServiceImpl" class="com.taotao.manage.service.impl.TestServiceImpl"/> -->
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.taotao.manage.service.TestService" ref="testServiceImpl" />
-		<dubbo:service interface="com.taotao.manage.service.ItemCatService" ref="itemCatServiceImpl" />
+	<dubbo:service interface="com.taotao.manage.service.ItemCatService" ref="itemCatServiceImpl" />
 </beans>

@@ -19,11 +19,16 @@ public class ItemCatController {
 	//注入Sercvice
 	private ItemCatService itemCatService;
 	
-	@RequestMapping(value = "/quert/{pageNo}",method=RequestMethod.GET)
-	public ResponseEntity<List<ItemCat>> queryItemCatByPage(@PathVariable("page") Integer page , 
+	@RequestMapping(value = "/query/{pageNo}",method=RequestMethod.GET)
+	public ResponseEntity<List<ItemCat>> queryItemCatByPage(@PathVariable("pageNo") Integer page , 
 			@RequestParam(value = "rows",defaultValue="20") Integer rows) {
 		
-		itemCatService.queryItemCatListByPage(page, rows);
+		try {
+			List<ItemCat> list = itemCatService.queryItemCatListByPage(page, rows);
+			return ResponseEntity.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	}
 }
