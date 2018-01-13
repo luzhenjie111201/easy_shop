@@ -73,5 +73,13 @@ public class ItemCat extends BasePojo {
     public void setIsParent(Boolean isParent) {
         this.isParent = isParent;
     }
+    //匹配tree组件的text
+    public String getText() {
+    	return this.getName();
+    }
 
+    //匹配tree组件的state
+    public String getState() {
+    	return this.getIsParent() ?"closed":"open";
+    }
 }
