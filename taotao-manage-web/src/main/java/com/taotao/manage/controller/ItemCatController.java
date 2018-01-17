@@ -21,6 +21,22 @@ public class ItemCatController {
 	@Autowired
 	private ItemCatService itemCatService;
 	
+	//根据类目ID查找
+	@RequestMapping(value = "/{itemCatId}",method=RequestMethod.GET)
+	public ResponseEntity<ItemCat> queryItemCatByPage(@PathVariable("itemCatId") Long itemCatId) {
+		
+		try {
+			//List<ItemCat> list = itemCatService.queryItemCatListByPage(page, rows);
+			 ItemCat itemCat = itemCatService.queryById(itemCatId);
+			return ResponseEntity.ok(itemCat);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	}
+	
+	
+	
 	@RequestMapping(value = "/query/{pageNo}",method=RequestMethod.GET)
 	public ResponseEntity<List<ItemCat>> queryItemCatByPage(@PathVariable("pageNo") Integer page , 
 			@RequestParam(value = "rows",defaultValue="20") Integer rows) {

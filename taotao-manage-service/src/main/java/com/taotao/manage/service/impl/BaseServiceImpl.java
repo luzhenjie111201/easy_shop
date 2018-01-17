@@ -103,9 +103,9 @@ public class BaseServiceImpl<T extends BasePojo> implements BaseService<T> {
 	public void deleteByIds(Serializable[] ids) {
 		Example example = new Example(this.clazz);
 		Criteria criteria = example.createCriteria();
-		criteria.andIn("ids",Arrays.asList(ids));
+		criteria.andIn("id",Arrays.asList(ids));
 		
-		mapper.deleteByPrimaryKey(ids);
+		mapper.deleteByExample(example);
 	}
 
 	/**

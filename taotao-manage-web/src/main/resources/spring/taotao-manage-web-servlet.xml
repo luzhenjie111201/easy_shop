@@ -21,6 +21,14 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<!-- 处理上传文件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 上传文件的最大大小 -->
+		<property name="maxUploadSize" value="5000000"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+
 	<!-- 配置dubbo服务 -->
 	<dubbo:application name="taotao-manage-web" />
 
@@ -37,14 +45,21 @@
 
 	<dubbo:reference interface="com.taotao.manage.service.ItemCatService"
 		id="itemCatService" timeout="1000000" />
-		
-		
+
+
 	<!-- 商品基本信息 -->
 	<dubbo:reference interface="com.taotao.manage.service.ItemService"
 		id="itemService" timeout="1000000" />
-		
-		
+
+
 	<!-- 商品描述信息 -->
 	<dubbo:reference interface="com.taotao.manage.service.ItemDescService"
 		id="itemDescService" timeout="1000000" />
+
+	<!-- 内容目录信息 -->
+	<dubbo:reference interface="com.taotao.manage.service.ContentCategoryService"
+		id="contentCategoryService" timeout="1000000" />
+
+	<dubbo:reference interface="com.taotao.manage.service.ContentService"
+		id="contentService" timeout="1000000" />
 </beans>

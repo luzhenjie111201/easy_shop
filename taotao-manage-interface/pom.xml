@@ -26,5 +26,10 @@
 			<groupId>com.github.jsqlparser</groupId>
 			<artifactId>jsqlparser</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.taotao</groupId>
+			<artifactId>taotao-common</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
